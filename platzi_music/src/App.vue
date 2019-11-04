@@ -1,17 +1,12 @@
-<template>
-  <div id="app">
-    <img
-      alt="Vue logo"
-      src="./assets/logo.png"
-    >
-
-    <h1>{{ msg }}</h1>
-  </div>
+<template lang="pug">
+  #app
+    img(src="./assets/logo.png" alt="Vue logo")
+    h1 {{msg}}
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: 'App',
   data: function () {
     return {
       msg: 'Hola todos amigos'
@@ -20,7 +15,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+  @import './scss/main';
   #app {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
