@@ -12,3 +12,7 @@ ambas complejidades deben ir a la par para poder llevar un proyecto adecuadament
 
 `cd [nombre-proyecto]` y ejecutar el comando
 `npm run serve` y la App estará disponible en el `http://localhost:8080/`
+
+## Configuraciones
+
+- version de Node 10
