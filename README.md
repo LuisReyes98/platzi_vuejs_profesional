@@ -1,5 +1,14 @@
 # Notas
 
+## Ejecutar proyecto
+
+`cd [nombre-proyecto]` y ejecutar el comando
+`yarn serve` y la App estará disponible en el `http://localhost:8080/`
+
+## Configuraciones
+
+- version de Node 10
+
 ## Complejidad inherente vs instrumental
 
 la complejidad inherente es la complejidad de lo que se desea hacer y
@@ -8,11 +17,8 @@ la complejidad instrumental es la complejidad de utilizar las herramientas para 
 ambas complejidades deben ir a la par para poder llevar un proyecto adecuadamente
 , mientras mas complejos mas herramientas y mas complejo
 
-## Ejecutar proyecto
+## Propiedades de vue.js
 
-`cd [nombre-proyecto]` y ejecutar el comando
-`npm run serve` y la App estará disponible en el `http://localhost:8080/`
+### Computed
 
-## Configuraciones
-
-- version de Node 10
+las computed properties se recargan cada vez que cambia alguna variable

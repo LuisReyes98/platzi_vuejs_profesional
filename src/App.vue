@@ -1,16 +1,19 @@
 <template lang="pug">
   #app
     .container
-      h1 {{msg}}
-      p {{1 + 1}}
-      p {{'Hola' + 'Mundo'}}
-      p {{ person.name }}
-      p {{ person.name.toUpperCase() }}
-      p {{JSON.stringify(person)}}
-      p {{ true ? 'true' : 'false'}}
+      h1 {{name}}
+      input(v-model="name")
+      //- p {{1 + 1}}
+      //- p {{'Hola' + 'Mundo'}}
+      //- p {{ person.name }}
+      //- p {{ person.name.toUpperCase() }}
+      //- p {{JSON.stringify(person)}}
+      //- p {{ true ? 'true' : 'false'}}
+      h2 {{formatName}}
+      button( @click="format" ) Format
     br
     .container
-      Ejercicio
+      //- Ejercicio
 </template>
 
 <script>
@@ -23,12 +26,20 @@ export default {
   },
   data: function () {
     return {
-      msg: 'Hola todos amigos',
-      person: {
-        name: 'Luis'
-      }
+      name: 'Luis Rogelio Reyes Hernandez',
+      formatName: ''
+    }
+  },
+  methods: {
+    format () {
+      this.formatName = this.name.split(' ').join('-')
     }
   }
+  // watch: {
+  //   msg (newVal, oldVal) {
+  //     console.log(oldVal, newVal)
+  //   }
+  // }
 }
 </script>
 
