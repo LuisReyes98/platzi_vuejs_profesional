@@ -1,7 +1,9 @@
 <template lang="pug">
   #app
+    p-m-header
     section.section
-      hello-world
+      p {{person}}
+      button(@click="addProp") Add prop
       nav.navbar
         .field.has-addons
           .control.is-expanded
@@ -23,23 +25,28 @@
             | {{ t.name }} --
           .colum
             | {{ t.artists[0].name }}
+    p-m-footer
 </template>
 
 <script>
 import trackService from './services/tracks'
 
-// const tracks = [
-//   { name: 'lorem1', artist: '1' },
-//   { name: 'lore2', artist: 'Lorem2' },
-//   { name: 'lorem3', artist: 'Lorem3' }
-// ]
+import PMHeader from './components/layout/PMHeader.vue'
+import PMFooter from './components/layout/PMFooter.vue'
 
 export default {
   name: 'App',
-  data: function () {
+  components: {
+    PMFooter,
+    PMHeader
+  },
+  data () {
     return {
       searchQuery: '',
-      tracks: []
+      tracks: [],
+      person: {
+        name: 'Luis'
+      }
     }
   },
   computed: {
@@ -57,6 +64,21 @@ export default {
             this.tracks = res.tracks.items
           }
         )
+    },
+    addProp () {
+      /* no se refleja en vue ya que vue no soprta por defecto
+        propiedades reactivas dentro de un objeto
+      */
+      // this.person.lastName = 'Anaya'
+      // esta es la forma en la vue permite agregaer reactivamente propiedades
+      // this.$set(this.person, 'lastName', 'Anaya')
+
+      // con el object assign
+      this.person = Object.assign(
+        {},
+        this.person,
+        { a: 1, b: 2 }
+      )
     }
   }
 }
