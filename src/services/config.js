@@ -1,4 +1,4 @@
 const configServices = {
-  apiUrl: 'http://platzi-music.now.sh'
+  apiURL: 'https://platzi-music-api.now.sh'
 }
 export default configServices

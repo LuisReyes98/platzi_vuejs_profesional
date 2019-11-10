@@ -1,6 +1,7 @@
 <template lang="pug">
   #app
     section.section
+      hello-world
       nav.navbar
         .field.has-addons
           .control.is-expanded
@@ -13,20 +14,25 @@
           .control
             button.button.is-danger &times;
           .control
-            button.button
-              span.is-size-7 Encontrado: {{ searchedMessage }}
+      .container
+        p.is-size-7 Encontrado: {{ searchedMessage }}
 
       .container.margin_results
-        .columns
-          .colum(v-for="t in tracks") {{ t.name }},{{ t.artist }}
+        .columns(v-for="t in tracks")
+          .colum
+            | {{ t.name }} --
+          .colum
+            | {{ t.artists[0].name }}
 </template>
 
 <script>
-const tracks = [
-  { name: 'lorem1', artist: '1' },
-  { name: 'lore2', artist: 'Lorem2' },
-  { name: 'lorem3', artist: 'Lorem3' }
-]
+import trackService from './services/tracks'
+
+// const tracks = [
+//   { name: 'lorem1', artist: '1' },
+//   { name: 'lore2', artist: 'Lorem2' },
+//   { name: 'lorem3', artist: 'Lorem3' }
+// ]
 
 export default {
   name: 'App',
@@ -43,8 +49,14 @@ export default {
   },
   methods: {
     search () {
-      console.log(this.searchQuery)
-      this.tracks = tracks
+      if (!this.searchQuery) { return }
+      trackService.search(this.searchQuery)
+        .then(
+          res => {
+            // console.log(res)
+            this.tracks = res.tracks.items
+          }
+        )
     }
   }
 }
