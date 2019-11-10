@@ -1,45 +1,52 @@
 <template lang="pug">
   #app
-    .container
-      h1 {{name}}
-      input(v-model="name")
-      //- p {{1 + 1}}
-      //- p {{'Hola' + 'Mundo'}}
-      //- p {{ person.name }}
-      //- p {{ person.name.toUpperCase() }}
-      //- p {{JSON.stringify(person)}}
-      //- p {{ true ? 'true' : 'false'}}
-      h2 {{formatName}}
-      button( @click="format" ) Format
-    br
-    .container
-      //- Ejercicio
+    section.section
+      nav.navbar
+        .field.has-addons
+          .control.is-expanded
+            input.input(
+              type="text"
+              placeholder="Buscar canciones"
+              v-model="searchQuery")
+          .control
+            button.button.is-info(@click="search") Buscar
+          .control
+            button.button.is-danger &times;
+          .control
+            button.button
+              span.is-size-7 Encontrado: {{ searchedMessage }}
+
+      .container.margin_results
+        .columns
+          .colum(v-for="t in tracks") {{ t.name }},{{ t.artist }}
 </template>
 
 <script>
-import Ejercicio from './components/Ejercicio.vue'
+const tracks = [
+  { name: 'lorem1', artist: '1' },
+  { name: 'lore2', artist: 'Lorem2' },
+  { name: 'lorem3', artist: 'Lorem3' }
+]
 
 export default {
   name: 'App',
-  components: {
-    Ejercicio
-  },
   data: function () {
     return {
-      name: 'Luis Rogelio Reyes Hernandez',
-      formatName: ''
+      searchQuery: '',
+      tracks: []
+    }
+  },
+  computed: {
+    searchedMessage () {
+      return this.tracks.length
     }
   },
   methods: {
-    format () {
-      this.formatName = this.name.split(' ').join('-')
+    search () {
+      console.log(this.searchQuery)
+      this.tracks = tracks
     }
   }
-  // watch: {
-  //   msg (newVal, oldVal) {
-  //     console.log(oldVal, newVal)
-  //   }
-  // }
 }
 </script>
 
@@ -52,6 +59,10 @@ export default {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+
+  .margin_results {
+    margin-top: 2rem;
   }
 
 </style>
