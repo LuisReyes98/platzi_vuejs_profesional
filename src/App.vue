@@ -54,6 +54,15 @@ export default {
       return this.tracks.length
     }
   },
+  created () {
+    // hux del ciclo de vida
+    // aqui no existe el html aun
+    console.log('created...')
+  },
+  mounted () {
+    // aqui se acaba de crear el html
+    console.log('mounted...')
+  },
   methods: {
     search () {
       if (!this.searchQuery) { return }
