@@ -1,111 +1,78 @@
 <template lang="pug">
   #app
-    p-m-header
-    section.section
-      p {{person}}
-      button(@click="addProp") Add prop
-      nav.navbar
-        .field.has-addons
-          .control.is-expanded
-            input.input(
-              type="text"
-              placeholder="Buscar canciones"
-              v-model="searchQuery")
-          .control
-            button.button.is-info(@click="search") Buscar
-          .control
-            button.button.is-danger &times;
-          .control
-      .container
-        p.is-size-7 Encontrado: {{ searchedMessage }}
+    pm-header
 
-      .container.margin_results
-        .columns(v-for="t in tracks")
-          .colum
-            | {{ t.name }} --
-          .colum
-            | {{ t.artists[0].name }}
-    p-m-footer
+    pm-loader(v-show="isLoading")
+    section.section(v-show="!isLoading")
+      nav.nav.has-shadow
+        .container
+          input.input.is-large(
+            type="text",
+            placeholder="Buscar canciones",
+            v-model="searchQuery"
+          )
+          a.button.is-info.is-large(@click="search") Buscar
+          a.button.is-danger.is-large &times;
+      .container
+        p
+          small {{ searchMessage }}
+
+      .container.results
+        .columns.is-multiline
+          .column.is-one-quarter(v-for="t in tracks")
+            pm-track(:track="t")
+
+    pm-footer
 </template>
 
 <script>
-import trackService from './services/tracks'
+import trackService from '@/services/track'
+import PmFooter from '@/components/layout/Footer.vue'
+import PmHeader from '@/components/layout/Header.vue'
 
-import PMHeader from './components/layout/PMHeader.vue'
-import PMFooter from './components/layout/PMFooter.vue'
+import PmTrack from '@/components/Track.vue'
+import PmLoader from '@/components/shared/Loader.vue'
 
 export default {
-  name: 'App',
-  components: {
-    PMFooter,
-    PMHeader
-  },
+  name: 'app',
+
+  components: { PmFooter, PmHeader, PmTrack, PmLoader },
+
   data () {
     return {
       searchQuery: '',
       tracks: [],
-      person: {
-        name: 'Luis'
-      }
+
+      isLoading: false
     }
   },
+
   computed: {
-    searchedMessage () {
-      return this.tracks.length
+    searchMessage () {
+      return `Encontrados: ${this.tracks.length}`
     }
   },
-  created () {
-    // hux del ciclo de vida
-    // aqui no existe el html aun
-    console.log('created...')
-  },
-  mounted () {
-    // aqui se acaba de crear el html
-    console.log('mounted...')
-  },
+
   methods: {
     search () {
       if (!this.searchQuery) { return }
-      trackService.search(this.searchQuery)
-        .then(
-          res => {
-            // console.log(res)
-            this.tracks = res.tracks.items
-          }
-        )
-    },
-    addProp () {
-      /* no se refleja en vue ya que vue no soprta por defecto
-        propiedades reactivas dentro de un objeto
-      */
-      // this.person.lastName = 'Anaya'
-      // esta es la forma en la vue permite agregaer reactivamente propiedades
-      // this.$set(this.person, 'lastName', 'Anaya')
 
-      // con el object assign
-      this.person = Object.assign(
-        {},
-        this.person,
-        { a: 1, b: 2 }
-      )
+      this.isLoading = true
+
+      trackService.search(this.searchQuery)
+        .then(res => {
+          this.tracks = res.tracks.items
+          this.isLoading = false
+        })
     }
   }
 }
 </script>
 
 <style lang="scss">
-  @import './scss/main';
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-  }
+  @import './scss/main.scss';
 
-  .margin_results {
-    margin-top: 2rem;
+  .results {
+    margin-top: 50px;
   }
-
 </style>
