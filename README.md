@@ -7,7 +7,7 @@
 
 ## Configuraciones
 
-- version de Node 10
+- version de Node 12
 
 ## Complejidad inherente vs instrumental
 
@@ -22,3 +22,8 @@ ambas complejidades deben ir a la par para poder llevar un proyecto adecuadament
 ### Computed
 
 las computed properties se recargan cada vez que cambia alguna variable
+
+### Slots
+
+los slots siven para crear espacios en los componentes hijos donde el componente padre puede insertar html
+los slots pueden tener un contenido por defecto pero si el componente padre añade contenido este toma prioridad.
