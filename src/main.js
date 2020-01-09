@@ -9,7 +9,8 @@ Vue.use(VueRouter)
 Vue.use(EventBus)
 
 const router = new VueRouter({
-  routes
+  routes,
+  mode: 'history'
 })
 
 new Vue({
