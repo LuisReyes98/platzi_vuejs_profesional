@@ -27,3 +27,11 @@ las computed properties se recargan cada vez que cambia alguna variable
 
 los slots siven para crear espacios en los componentes hijos donde el componente padre puede insertar html
 los slots pueden tener un contenido por defecto pero si el componente padre añade contenido este toma prioridad.
+
+### Modifiers
+
+permiten hacer prevent default a los eventos que nos proporciona vue para crear cosas como por ejemplo: `@keyup.enter="search"` donde el evento se dispara solo al darle enter
+
+### Filtros
+
+permiten modificar la forma en que se muestra una variable sin modificar su valor
