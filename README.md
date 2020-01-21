@@ -35,3 +35,23 @@ permiten hacer prevent default a los eventos que nos proporciona vue para crear 
 ### Filtros
 
 permiten modificar la forma en que se muestra una variable sin modificar su valor
+
+### Mixins
+
+permiten compartir methods, computed , etc , cualquier propiedad o metodo de un componente entre componentes
+
+### Transitions
+
+permiten controlar las animaciones de entrada y salida de componentes , opacity 0 ha 1 y viceversa
+
+### Vuex
+
+se recomienda para aplicaciones de mediana o gran escala.
+genera un singleton de la informacion con un store de los estados de la aplicacion permitiendo que diversos componentes manejen la misma informacion
+
+esta pensado en un manejo de estados a gran escala.
+
+cuando se recomienda, cuando hay demasiadas interacciones entre eventos padres e hijos y hermanos.
+**Vuex es una libreria Flux que al igual que los anteojos te daras cuenta cuando las necesitas**.
+
+### 
