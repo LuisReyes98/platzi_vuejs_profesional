@@ -6,6 +6,7 @@
 
     transition(name="move")
       pm-loader(v-show="isLoading")
+
     section.section(v-show="!isLoading")
       nav.nav
         .container
@@ -22,14 +23,14 @@
           small {{ searchMessage }}
 
       .container.results
-        .columns.is-multiline
-          .column.is-one-quarter(v-for="t in tracks")
-            pm-track(
-              v-blur="t.preview_url"
-              :class="{ 'is-active': t.id === selectedTrack }",
-              :track="t",
-              @select="setSelectedTrack"
-            )
+        // .columns.is-multiline
+        transition-group(name="fade", tag="div" class="columns is-multiline")
+          .column.is-one-quarter(v-for="t in tracks", :key="t.id")
+            pm-track(:track="t",
+            :class="{ 'is-active': t.id === selectedTrack }",
+            v-blur="t.preview_url",
+            @select="setSelectedTrack")
+      p Todos los derechos reservados
 </template>
 
 <script>
@@ -73,6 +74,7 @@ export default {
       if (!this.searchQuery) { return }
 
       this.isLoading = true
+      this.tracks = []
 
       trackService.search(this.searchQuery)
         .then(res => {

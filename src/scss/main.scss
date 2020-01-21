@@ -10,3 +10,11 @@
   transform: translateX(100%);
 }
 
+.fade-enter-active, .fade-leave-active {
+	transform: scale(1);
+	transition: all .8s linear;
+}
+
+.fade-enter, .fade-leave-to {
+	transform: scale(0);
+}
