@@ -44,6 +44,10 @@ permiten compartir methods, computed , etc , cualquier propiedad o metodo de un 
 
 permiten controlar las animaciones de entrada y salida de componentes , opacity 0 ha 1 y viceversa
 
+### Directivas Custom
+
+al instalar directivas como por ejemplo `Vue.use(blur)` con la syntaxis debida , las puedes usar en codigo como por ejemplo: `v-blur`, creando directivas custom y reutilizables
+
 ### Vuex
 
 se recomienda para aplicaciones de mediana o gran escala.
@@ -54,4 +58,60 @@ esta pensado en un manejo de estados a gran escala.
 cuando se recomienda, cuando hay demasiadas interacciones entre eventos padres e hijos y hermanos.
 **Vuex es una libreria Flux que al igual que los anteojos te daras cuenta cuando las necesitas**.
 
-### 
+vuex funciona como un arbol con toda la informacion que al haber un cambio en esta, vuex se encarga de propagarla a todos los componentes hijos
+
+#### State
+
+vuex utiliza un `store` que representa el estado global, siendo este el origen unico de la verdad.
+
+cambios de estado se realizan con un commit
+
+```javascript
+this.$store.commit('increment', { number: 10})
+```
+
+#### Mutations
+
+funcionan de manera similar a los eventos en los cual con un commit se realiza un cambio al estado de la aplicacion
+
+#### getters
+
+permite con vuex acceder a  las propiedades de forma personalizada, como si fuera un computed
+
+#### Actions
+
+las actions existen porque las mutations son sincronicas, por lo cual no puedes hacer un request HTTP con una mutation.
+
+las actions permiten crear codigo asyncronico que ejecuta una mutation
+
+se ejecutan con un dispatch
+
+```javascript
+this.$store.dispatch('incrementAsync', { number: 1})
+```
+
+si deseas ejecutar codigo despues que se realize el action, lo puedes hacer facilmente retornando una promesa
+
+```javascript
+return new Promise((resolve, reject) => {
+  // Codigo asyncronico se ejecuta
+  if(error){
+    reject()
+  }
+  resolve()
+})
+```
+
+#### Syntaxis de ECMAScript
+
+Vuex utiliza una syntaxis de ECMAScript, que para el momento de escribir esto forma parte del stage 2 que es el:1
+
+- script operator
+
+```javascript
+let { x, y , ...z} = {x: 1, y: 2, a:3, b:4 }
+
+x // 1
+y // 2
+z // { a:3, b:4}
+```
