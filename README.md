@@ -50,7 +50,7 @@ al instalar directivas como por ejemplo `Vue.use(blur)` con la syntaxis debida ,
 
 ### Vuex
 
-se recomienda para aplicaciones de mediana o gran escala.
+en aplicaciones pequeñas para comunicarse entre componentes puede ser util un event bus, pero se recomienda para aplicaciones de mediana o gran escala el uso de Vuex, ya que el event bus se volveria tedioso y poco escalable.
 genera un singleton de la informacion con un store de los estados de la aplicacion permitiendo que diversos componentes manejen la misma informacion
 
 esta pensado en un manejo de estados a gran escala.
@@ -104,7 +104,7 @@ return new Promise((resolve, reject) => {
 
 #### Syntaxis de ECMAScript
 
-Vuex utiliza una syntaxis de ECMAScript, que para el momento de escribir esto forma parte del stage 2 que es el:1
+Vuex utiliza una syntaxis de ECMAScript, que para el momento de escribir esto forma parte del stage 2 que es el:
 
 - script operator
 
@@ -115,3 +115,7 @@ x // 1
 y // 2
 z // { a:3, b:4}
 ```
+
+#### Modulos de vuex
+
+[Modulos de vuex para estados de aplicaciones grandes](https://vuex.vuejs.org/guide/modules.html)
