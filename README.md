@@ -119,3 +119,18 @@ z // { a:3, b:4}
 #### Modulos de vuex
 
 [Modulos de vuex para estados de aplicaciones grandes](https://vuex.vuejs.org/guide/modules.html)
+
+### Server side rendering
+
+permite precargar el contenido frontend en el server para así lograr que en la pc del usuario final se ejecute menos javascript y la carga de la pagina web sea mas rapida, tambien permitiendo que la pagina tenga una mejor puntuacion en los servicios de busqueda de paginas web como google.
+
+esto posee diversas desventajas, en el caso de vue.js no todas las directivas y opciones nativas de vue.js o vuex estaran disponibles, como pueden ser el `created` entre otros.
+
+En el caso de vue.js para lograr server side rendering tenemos diversas herramientas entre ellas tenemos:
+
+- Opcion nativa de vue.js que se puede ver en su documentacion
+
+- `Nuxt.js`.
+
+### Nuxt.js
+
