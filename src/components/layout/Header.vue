@@ -7,8 +7,10 @@
             .nav-item
               strong 📻  Platzi Music
             .nav-right.nav-menu
-              router-link.nav-item(:to="{ name: 'search' }") Buscar
-              router-link.nav-item(to="about") Nosotros
+              a.nav-item(@click="selectLang('en')") EN
+              a.nav-item(@click="selectLang('es')") ES
+              router-link.nav-item(to="search") {{ $t('search') }}
+              router-link.nav-item(to="about") {{ $t('about') }}
 
     .hero-body
       .container.has-text-centered
@@ -20,6 +22,11 @@
 import PmPlayer from '@/components/Player.vue'
 
 export default {
-  components: {PmPlayer}
+  components: {PmPlayer},
+  methods: {
+    selectLang (lang) {
+      this.$i18n.locale = lang
+    }
+  }
 }
 </script>
