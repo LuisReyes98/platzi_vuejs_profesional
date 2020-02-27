@@ -134,3 +134,9 @@ En el caso de vue.js para lograr server side rendering tenemos diversas herramie
 
 ### Nuxt.js
 
+Es una solucion/framework capaz de ejecutar Server side Rendering en aplicaciones de vue.
+con ciertas limitaciones en cuanto a eventos y funcionalidades nativas de Vue.js
+
+## Now como plataforma de deploy
+
+[Now](https://zeit.co/dashboard) es una herramienta que permite hacer deploy de aplicaciones tipo webpack. en los servidores de NOW
