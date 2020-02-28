@@ -140,3 +140,29 @@ con ciertas limitaciones en cuanto a eventos y funcionalidades nativas de Vue.js
 ## Now como plataforma de deploy
 
 [Now](https://zeit.co/dashboard) es una herramienta que permite hacer deploy de aplicaciones tipo webpack. en los servidores de NOW
+
+## Units Test
+
+crear el projecto con la template de webpack
+
+```shell
+vue init webpack $project_name
+```
+
+esta configuracion tambien permite configurar los test unitarios con jest
+
+### Karma
+
+es un entorno para ejecutar los test mas no para crearlos
+
+por defecto Karma ejecuta los test solamente en **PhantomJS** el cual es un browser ligero de consola conveniente para el desarrollo. Se recomiendo antes de mandar a produccion agregar todos los tipos de browser para garantizar la funcionalidad y fiabilidad de nuestra aplicacion
+
+### Mocha
+
+Mocha es una herramienta para crear test unitarios
+
+en la carpeta `specs` se puede apreciar un ejmplo de lo que se puede testear
+
+### Otros
+
+librerias como **sinon-chai** permiten crear los test de forma mas intuitiva y autodocumentada
